@@ -10,7 +10,7 @@ COPY go.sum .
 
 # Download the dependencies
 RUN go mod download
-Run go test
+RUN go test
 # Copy the source code into the container
 COPY . .
 
