@@ -10,13 +10,13 @@ COPY go.sum .
 
 # Download the dependencies
 RUN go mod download
-RUN go test
+
 # Copy the source code into the container
 COPY . .
 
 # Build the controller binary
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o controller .
-
+RUN go test
 # Create a minimal runtime image
 FROM alpine:latest
 WORKDIR /root/
